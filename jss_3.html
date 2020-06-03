@@ -1,0 +1,43 @@
+<html>
+
+<head>
+
+<title></title>
+
+</head>
+
+<body>
+<button id="btn">Òþ²Ø</button>
+<button id="btu">»»</button>
+<img src="1.jpg" id="img" width="300p"/>
+
+</body>
+<script>
+var btn=document.getElementById("btn");
+var btu=document.getElementById("btu");
+var img=document.getElementById("img");
+var xia=0;
+btn.addEventListener("click",function(){
+if(btn.innerText=="Òþ²Ø"){
+img.style.opacity=0;
+btn.innerText="ÏÔÊ¾";
+}
+
+else{
+img.style.opacity=1;
+btn.innerText="Òþ²Ø";
+}
+});
+var imgs=["1.jpg","2.jpy"];
+btu.addEventListener("click",function(){
+if(xia<1){
+xia++;}else{
+xia=0;
+}
+img.src=imgs[xia];
+}
+);
+</script>
+
+
+</html>

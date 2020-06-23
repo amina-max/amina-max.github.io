@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery+css3立体式动画banner切换效果</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<!-- 代码部分begin -->
+	<div class="slider-outer" id="j_silder_outer">
+		<div class="img-item">
+			<div class="img"></div>
+			<div class="img"></div>
+			<div class="img"></div>
+			<div class="img"></div>
+		</div>
+		<div class="img-item">
+			<div class="img"></div>
+			<div class="img"></div>
+			<div class="img"></div>
+			<div class="img"></div>
+		</div>
+		<div class="img-item">
+			<div class="img"></div>
+			<div class="img"></div>
+			<div class="img"></div>
+			<div class="img"></div>
+		</div>
+		<div class="img-item">
+			<div class="img"></div>
+			<div class="img"></div>
+			<div class="img"></div>
+			<div class="img"></div>
+		</div>
+		<div class="img-item">
+			<div class="img"></div>
+			<div class="img"></div>
+			<div class="img"></div>
+			<div class="img"></div>
+		</div>
+		<div class="btns" data-num="0">
+			<div class="prev"><</div>
+			<div class="next">></div>
+		</div>
+	</div>
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+	<script>
+		$(function (){
+			var num = 0;
+			$("#j_silder_outer .img-item").each(function(index, el) {
+				$(this).css({
+					"left":$(this).width() * index + "px",
+					/*让每个img-item延时一定时间执行动画*/
+					"transitionDelay": index * 0.3 + "s"
+				});
+				$(this).find(".img").css({
+					"backgroundPosition": -$(this).width() * index + "px"
+				});;
+			});
+
+			$(".prev").on("click",function (){
+				$("#j_silder_outer .img-item").css("transform", "rotateX(" + (++num * 90) + "deg)");
+			});
+
+			$(".next").on("click",function (){
+				$("#j_silder_outer .img-item").css("transform", "rotateX(" + (--num * 90) + "deg)");
+			});
+			
+			var timejg=4000;//轮播间隔时间
+			var time = setInterval(move,timejg);
+			function move(){
+				$("#j_silder_outer .img-item").css("transform", "rotateX(" + (--num * 90) + "deg)");
+			}
+			$('.slider-outer').hover(function(){
+				clearInterval(time);
+			},function(){
+				time = setInterval(move,timejg);
+			});
+		})
+	</script>
+	<!-- 代码部分end -->
+
+</body>
+</html>
